@@ -1,0 +1,154 @@
+{
+  "name": "linear",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "clab",
+        "bridge": "br-36f2faef39dc",
+        "ipv4-subnet": "172.20.20.0/24",
+        "ipv4-gw": "172.20.20.1",
+        "ipv6-subnet": "3fff:172:20:20::/64",
+        "ipv6-gw": "3fff:172:20:20::1",
+        "external-access": true
+      }
+    }
+  },
+  "ssh-pub-keys": ["ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBGkYtRK6p3s8qVWra76RSsVc1eFyVftAQEHTP+YhM4JLT/1zDG5Qs0YXdkqg/TsQanp+9ejUT0Ad2VYb1jNsv/c="],
+  "nodes": {
+    "client": {
+      "index": "0",
+      "shortname": "client",
+      "longname": "clab-linear-client",
+      "fqdn": "client.linear.io",
+      "group": "",
+      "labdir": "/workspaces/container-labs/clab-linear/client",
+      "kind": "linux",
+      "image": "alpine:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.4",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::4",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-git-branch": "main",
+        "clab-git-hash": "2f55979",
+        "clab-mgmt-net-bridge": "br-36f2faef39dc",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/workspaces/container-labs/clab-linear/client",
+        "clab-node-longname": "clab-linear-client",
+        "clab-node-name": "client",
+        "clab-node-type": "",
+        "clab-owner": "vscode",
+        "clab-topo-file": "/workspaces/container-labs/linear.yaml",
+        "containerlab": "linear"
+      },
+      "port-bindings": [
+      ]
+    },
+    "router": {
+      "index": "1",
+      "shortname": "router",
+      "longname": "clab-linear-router",
+      "fqdn": "router.linear.io",
+      "group": "",
+      "labdir": "/workspaces/container-labs/clab-linear/router",
+      "kind": "linux",
+      "image": "alpine:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.3",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::3",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-git-branch": "main",
+        "clab-git-hash": "2f55979",
+        "clab-mgmt-net-bridge": "br-36f2faef39dc",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/workspaces/container-labs/clab-linear/router",
+        "clab-node-longname": "clab-linear-router",
+        "clab-node-name": "router",
+        "clab-node-type": "",
+        "clab-owner": "vscode",
+        "clab-topo-file": "/workspaces/container-labs/linear.yaml",
+        "containerlab": "linear"
+      },
+      "port-bindings": [
+      ]
+    },
+    "server": {
+      "index": "2",
+      "shortname": "server",
+      "longname": "clab-linear-server",
+      "fqdn": "server.linear.io",
+      "group": "",
+      "labdir": "/workspaces/container-labs/clab-linear/server",
+      "kind": "linux",
+      "image": "alpine:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.20.20.2",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "3fff:172:20:20::2",
+      "mgmt-ipv6-prefix-length": 64,
+      "mac-address": "",
+      "labels": {
+        "clab-git-branch": "main",
+        "clab-git-hash": "2f55979",
+        "clab-mgmt-net-bridge": "br-36f2faef39dc",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/workspaces/container-labs/clab-linear/server",
+        "clab-node-longname": "clab-linear-server",
+        "clab-node-name": "server",
+        "clab-node-type": "",
+        "clab-owner": "vscode",
+        "clab-topo-file": "/workspaces/container-labs/linear.yaml",
+        "containerlab": "linear"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "endpoints": {
+        "a": {
+          "node": "client",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:82:6e:35",
+          "peer": "z"
+        },
+        "z": {
+          "node": "router",
+          "interface": "eth1",
+          "mac": "aa:c1:ab:0f:6d:a5",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "router",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:94:be:2c",
+          "peer": "z"
+        },
+        "z": {
+          "node": "server",
+          "interface": "eth2",
+          "mac": "aa:c1:ab:f5:fd:ac",
+          "peer": "a"
+        }
+      }
+    }
+  ]
+}
